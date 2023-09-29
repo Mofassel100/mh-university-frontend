@@ -12,7 +12,7 @@ export const getUserInfo = () => {
   const geTokencalStorageDat = getFromlocalStrorage(authKey);
   if (geTokencalStorageDat) {
     const decodeTokens = decodeToken(geTokencalStorageDat);
-    console.log(decodeTokens);
+    return decodeTokens;
   }
 };
 export const isLoggedIn = () => {

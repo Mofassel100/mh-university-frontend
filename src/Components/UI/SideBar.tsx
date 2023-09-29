@@ -1,25 +1,17 @@
 "use client";
 
 import { Layout, Menu } from "antd";
-import type { MenuProps } from "antd";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 import { useState } from "react";
 import SideBarItems from "@/constants/sideBarItems";
 import { USER_ROLE } from "@/constants/role";
+import { getUserInfo } from "@/services/auth.store";
 const { Sider } = Layout;
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //   token: { colorBgContainer },
-  // } = theme.useToken();
-  const role = USER_ROLE.SUPER_ADMIN;
+
+  const { role } = getUserInfo() as any;
+
   return (
     <Sider
       collapsible

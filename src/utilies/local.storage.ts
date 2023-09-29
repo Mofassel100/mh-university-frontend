@@ -12,3 +12,6 @@ export const getFromlocalStrorage = (key: string) => {
   }
   return localStorage.getItem(key);
 };
+export const RemoveFromlocalStrorage = (key: string) => {
+  return localStorage.removeItem(key);
+};

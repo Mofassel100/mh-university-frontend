@@ -1,6 +1,7 @@
 "use client";
 import { Layout } from "antd";
 import MHBreadCrumn from "./MHBreadCrumn";
+import Header from "./Header";
 const { Content } = Layout;
 const Contents = ({ children }: { children: React.ReactNode }) => {
   const base = "admin";
@@ -10,6 +11,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
         minHeight: "100vh",
       }}
     >
+      <Header></Header>
       <MHBreadCrumn
         items={[
           {
