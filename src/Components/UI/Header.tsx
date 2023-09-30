@@ -3,6 +3,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { authKey } from "@/constants/lacalstorage";
 import { RemoveFromlocalStrorage } from "@/utilies/local.storage";
 import { useRouter } from "next/navigation";
+import { getUserInfo } from "@/services/auth.store";
 
 const { Header: AntHeader } = Layout;
 const Header = () => {
@@ -21,6 +22,7 @@ const Header = () => {
       ),
     },
   ];
+  const { role } = getUserInfo() as any;
   return (
     <AntHeader
       style={{
@@ -31,6 +33,7 @@ const Header = () => {
         <Dropdown menu={{ items }}>
           <a>
             <Space wrap size={16}>
+              {role}
               <Avatar size="large" icon={<UserOutlined />} />
             </Space>
           </a>

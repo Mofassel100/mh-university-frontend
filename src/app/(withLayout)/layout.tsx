@@ -2,7 +2,7 @@
 import Contents from "@/Components/UI/Contents";
 import SideBar from "@/Components/UI/SideBar";
 import { isLoggedIn } from "@/services/auth.store";
-import { Layout } from "antd";
+import { Layout, Row, Space, Spin } from "antd";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -18,13 +18,17 @@ const DeshboardLayout = ({ children }: { children: React.ReactNode }) => {
   }, [router]);
   if (!isLoading) {
     return (
-      <h1
+      <Row
+        justify="center"
+        align="middle"
         style={{
-          fontSize: "30px",
+          height: "100vh",
         }}
       >
-        Loading ...........
-      </h1>
+        <Space>
+          <Spin tip="Loading" size="large"></Spin>
+        </Space>
+      </Row>
     );
   }
   return (

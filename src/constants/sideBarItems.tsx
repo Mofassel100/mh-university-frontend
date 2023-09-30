@@ -18,8 +18,8 @@ const SideBarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
-          key: `/${role}/profile`,
+          label: <Link href={`/${role}`}>Account Profile</Link>,
+          key: `/${role}`,
         },
         {
           label: <Link href={`/${role}/change-password`}>Change Password</Link>,
@@ -126,17 +126,6 @@ const SideBarItems = (role: string) => {
       label: <Link href={`/${role}/user`}>Manage User</Link>,
       key: `/${role}/user`,
       icon: <TableOutlined />,
-    },
-    {
-      label: "Manage Permission",
-      key: "manage-permission",
-      icon: <AppstoreAddOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/permission`}>View Permission</Link>,
-          key: `/${role}/permission`,
-        },
-      ],
     },
     {
       label: "Management",
