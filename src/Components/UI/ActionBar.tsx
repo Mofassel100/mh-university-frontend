@@ -3,7 +3,7 @@ type RepTC = {
   children: React.ReactElement | React.ReactNode;
 };
 
-const Action = ({ title, children }: RepTC) => {
+const ActionBar = ({ title, children }: RepTC) => {
   return (
     <div>
       <h1>{title}</h1>
@@ -18,4 +18,4 @@ const Action = ({ title, children }: RepTC) => {
   );
 };
 
-export default Action;
+export default ActionBar;

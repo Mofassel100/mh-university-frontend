@@ -9,7 +9,7 @@ interface IInput {
   size?: "large" | "small";
   validation?: object;
   placeholder?: string;
-  lavel?: string;
+  label?: string;
 }
 
 const FromInput = ({
@@ -20,12 +20,12 @@ const FromInput = ({
   placeholder,
   validation,
   size,
-  lavel,
+  label,
 }: IInput) => {
   const { control } = useFormContext();
   return (
     <>
-      {lavel}
+      {label}
       <Controller
         control={control}
         name={name}
