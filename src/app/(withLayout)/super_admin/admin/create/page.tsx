@@ -12,6 +12,8 @@ import {
   GenderOptions,
   ManagementDepartment,
 } from "@/constants/global";
+import { adminSchema } from "@/schemas/admin";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "antd";
 
 const CreateAdmin = () => {
@@ -42,7 +44,7 @@ const CreateAdmin = () => {
         ]}
       />
       <h1>Create Admin</h1>
-      <From submitHenler={onSubmit}>
+      <From submitHenler={onSubmit} resolver={yupResolver(adminSchema)}>
         <div
           style={{
             border: "1px solid #d9d9d9",

@@ -1,7 +1,10 @@
+import { number } from "yup";
+
 export type IMeta = {
-  page: number;
-  limit: number;
-  size: number;
+  page?: number;
+  limit?: number;
+  size?: number;
+  total?: number;
 };
 export type ResponseSuccess = {
   data: any;
@@ -16,3 +19,10 @@ export type IGenericErrorResponse = {
   message: string;
   errorMessages: IGenericErrorMessage[];
 };
+export interface IDepartment {
+  id: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}

@@ -1,12 +1,12 @@
 "use client";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, message } from "antd";
 import loginImage from "../../assats/image/login-img.png";
 import Image from "next/image";
 import From from "@/Components/From/from";
 import FromInput from "@/Components/From/fromInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { authUserInfo, getUserInfo, isLoggedIn } from "@/services/auth.store";
+import { authUserInfo } from "@/services/auth.store";
 import { useRouter } from "next/navigation";
 
 type FromValues = {
@@ -21,6 +21,7 @@ const LoginPage = () => {
       const res = await userLogin({ ...data }).unwrap();
       if (res?.accessToken) {
         router.push("/profile");
+        message.success("User logged in Successfully !");
       }
       authUserInfo({ accessToken: res?.accessToken });
     } catch (error) {
@@ -50,7 +51,7 @@ const LoginPage = () => {
           <div>
             <From submitHenler={onSubmit}>
               <div>
-                <FromInput name="id" type="text" size="large" lavel="User Id" />
+                <FromInput name="id" type="text" size="large" label="User Id" />
               </div>
               <div
                 style={{
@@ -61,7 +62,7 @@ const LoginPage = () => {
                   name="password"
                   type="password"
                   size="large"
-                  lavel="User Password"
+                  label="User Password"
                 />
               </div>
               <Button type="primary" htmlType="submit">

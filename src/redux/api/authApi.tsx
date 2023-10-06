@@ -1,3 +1,4 @@
+import { taqTypes } from "../slices/taq-types";
 import { baseApi } from "./baseApi";
 const AUTH_API_ENDP = "/auth";
 export const authApi = baseApi.injectEndpoints({
@@ -8,7 +9,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: loginData,
       }),
-      invalidatesTags: ["user"],
+      invalidatesTags: [taqTypes.user],
     }),
   }),
   overrideExisting: false,
