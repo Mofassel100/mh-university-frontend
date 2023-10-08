@@ -7,23 +7,68 @@ import FromInput from "@/Components/From/fromInput";
 
 import MHBreadCrumn from "@/Components/UI/MHBreadCrumn";
 import UploadImage from "@/Components/UI/UploadImge";
-import {
-  BloodGroup,
-  GenderOptions,
-  ManagementDepartment,
-} from "@/constants/global";
+import { BloodGroup, GenderOptions } from "@/constants/global";
+import { useAddAdminWithFormDataMutation } from "@/redux/api/adminApi";
+import { useDepartmentsQuery } from "@/redux/api/departmentApi";
 import { adminSchema } from "@/schemas/admin";
+import { IDepartment } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, message } from "antd";
 
 const CreateAdmin = () => {
-  const onSubmit = async (data: any) => {
+  const { data, isLoading } = useDepartmentsQuery({ limit: 100, page: 1 });
+  const [addAdminWithFormData] = useAddAdminWithFormDataMutation();
+  const onSubmit = async (values: any) => {
+    if (!values) {
+      console.error("Values object is undefined or null.");
+      return;
+    }
+    const obj = { ...values };
+    const file = obj["file"];
+
+    if (file) {
+      delete obj["file"];
+      // Rest of your code to process 'file' and 'values'
+    } else {
+      console.error("File is not present in values.");
+      return;
+    }
+    console.log("file", file);
+    const data = JSON.stringify(obj);
+    const formData = new FormData();
+    formData.append("file", file as Blob);
+    formData.append("data", data);
+    if (!formData) {
+      message.loading("Creating...");
+      return;
+    }
+
+    console.log("data");
     try {
-      console.log(data);
-    } catch (error) {
-      console.error(error);
+      const datas = {
+        data,
+        file,
+      };
+      const bb = await addAdminWithFormData(datas);
+      console.log(bb);
+
+      message.success("Admin created successfully!");
+    } catch (err: any) {
+      console.error(err.message);
     }
   };
+
+  //@ts-ignore
+  const departmens: IDepartment[] = data?.departments;
+
+  const managementDepartmentOptions =
+    departmens &&
+    departmens?.map((department) => {
+      return {
+        label: department.title,
+        value: department.id,
+      };
+    });
   return (
     <div
       style={{
@@ -38,7 +83,7 @@ const CreateAdmin = () => {
             link: "/super_admin",
           },
           {
-            label: "super_admin/admin",
+            label: "admin",
             link: "/super_admin/admin",
           },
         ]}
@@ -136,7 +181,7 @@ const CreateAdmin = () => {
                 name="admin.managementDepartment"
                 label="Department"
                 placeholder="Select Options"
-                options={ManagementDepartment}
+                options={managementDepartmentOptions}
               />
             </Col>
             <Col
@@ -146,7 +191,7 @@ const CreateAdmin = () => {
                 marginBottom: "10px",
               }}
             >
-              <UploadImage />
+              <UploadImage name="file" />
             </Col>
           </Row>
         </div>

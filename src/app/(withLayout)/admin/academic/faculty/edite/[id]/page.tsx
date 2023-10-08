@@ -4,32 +4,27 @@ import FromInput from "@/Components/From/fromInput";
 import ActionBar from "@/Components/UI/ActionBar";
 import MHBreadCrumn from "@/Components/UI/MHBreadCrumn";
 import {
-  useAcademicDepartmentQuery,
-  useUpdateAcademicDepartmentMutation,
-} from "@/redux/api/academic/department";
-import {
   useAcademicFacultyQuery,
   useUpdateAcademicFacultyMutation,
 } from "@/redux/api/academic/facultyacultyApi";
-import {
-  useDepartmentQuery,
-  useUpdateDepartmentMutation,
-} from "@/redux/api/departmentApi";
+
 import { Button, Col, Row, message } from "antd";
 
 type IParams = {
   params: any;
 };
 
-const EditeAcademicFaculty = ({ params }: IParams) => {
+const EditeDepartment = ({ params }: IParams) => {
   const { id } = params;
   const { data, isLoading } = useAcademicFacultyQuery(id);
-  const [updateDepartment] = useUpdateAcademicFacultyMutation();
+  const [updateAcademicFaculty] = useUpdateAcademicFacultyMutation();
   const onSubmit = async (value: { title: string }) => {
     message.loading("Updating.....");
     try {
-      await updateDepartment({ id, body: value });
-      message.success("Department Updating SuccessFull");
+      const res = await updateAcademicFaculty({ id, body: value });
+      if (!!res) {
+        message.success("Faculty Updating SuccessFull");
+      }
     } catch (err: any) {
       console.log(err.message);
       message.error(err.message);
@@ -44,12 +39,12 @@ const EditeAcademicFaculty = ({ params }: IParams) => {
       <MHBreadCrumn
         items={[
           {
-            label: "super_admin",
-            link: "/super_admin",
+            label: "admin",
+            link: "/admin",
           },
           {
-            label: "department",
-            link: `/super_admin/department`,
+            label: "academic-faculty",
+            link: `/admin/academic/faculty`,
           },
         ]}
       />
@@ -93,4 +88,4 @@ const EditeAcademicFaculty = ({ params }: IParams) => {
   );
 };
 
-export default EditeAcademicFaculty;
+export default EditeDepartment;

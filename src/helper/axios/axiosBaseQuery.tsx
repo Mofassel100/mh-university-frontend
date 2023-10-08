@@ -26,7 +26,7 @@ export const axiosBaseQuery =
         data,
         params,
         headers: {
-          contentType: "application/json" || contentType,
+          "Content-Type": "application/json" || contentType,
         },
       });
       return result;

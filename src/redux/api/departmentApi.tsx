@@ -18,6 +18,28 @@ export const departmentApi = baseApi.injectEndpoints({
       },
       providesTags: [taqTypes.department],
     }),
+    department: builder.query({
+      query: (id) => ({
+        url: `${DEPARTMENT_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [taqTypes.department],
+    }),
+    updateDepartment: builder.mutation({
+      query: (data) => ({
+        url: `${DEPARTMENT_URL}/${data.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [taqTypes.department],
+    }),
+    deletedDepartment: builder.mutation({
+      query: (id) => ({
+        url: `${DEPARTMENT_URL}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [taqTypes.department],
+    }),
     addDepartment: builder.mutation({
       query: (data) => ({
         url: DEPARTMENT_URL,
@@ -30,4 +52,10 @@ export const departmentApi = baseApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useDepartmentsQuery, useAddDepartmentMutation } = departmentApi;
+export const {
+  useDepartmentsQuery,
+  useAddDepartmentMutation,
+  useDepartmentQuery,
+  useUpdateDepartmentMutation,
+  useDeletedDepartmentMutation,
+} = departmentApi;

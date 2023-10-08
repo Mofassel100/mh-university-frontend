@@ -95,3 +95,39 @@ export const AcaSemester = [
     value: "summer2023",
   },
 ];
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+export const monthOptions = months.map((month: string) => {
+  return {
+    label: month,
+    value: month,
+  };
+});
+
+export const days = [
+  "SATURDAY",
+  "SUNDAY",
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+];
+export const daysOptions = days.map((day: string) => {
+  return {
+    label: day,
+    value: day,
+  };
+});

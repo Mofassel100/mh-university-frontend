@@ -1,6 +1,6 @@
 type RepTC = {
-  title: string;
-  children: React.ReactElement | React.ReactNode;
+  title?: string;
+  children?: React.ReactElement | React.ReactNode;
 };
 
 const ActionBar = ({ title, children }: RepTC) => {

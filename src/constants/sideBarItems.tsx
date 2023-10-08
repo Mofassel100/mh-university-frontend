@@ -49,16 +49,16 @@ const SideBarItems = (role: string) => {
       icon: <TableOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/academic-faculty`}>Faculties</Link>,
-          key: `/${role}/academic-faculty`,
+          label: <Link href={`/${role}/academic/faculty`}>Faculties</Link>,
+          key: `/${role}/academic/faculty`,
         },
         {
-          label: <Link href={`/${role}/academic-department`}>Departments</Link>,
-          key: `/${role}/academic-department`,
+          label: <Link href={`/${role}/academic/department`}>Departments</Link>,
+          key: `/${role}/academic/department`,
         },
         {
-          label: <Link href={`/${role}/academic-semester`}>Semesters</Link>,
-          key: `/${role}/academic-semester`,
+          label: <Link href={`/${role}/academic/semester`}>Semesters</Link>,
+          key: `/${role}/academic/semester`,
         },
       ],
     },

@@ -39,7 +39,7 @@ const FromDatePicker = ({
             style={{
               width: "100%",
             }}
-            value={dayjs(field.value) || ""}
+            defaultValue={dayjs(field.value) || ""}
           />
         )}
       />

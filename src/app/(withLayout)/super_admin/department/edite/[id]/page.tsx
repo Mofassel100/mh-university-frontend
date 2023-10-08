@@ -4,14 +4,6 @@ import FromInput from "@/Components/From/fromInput";
 import ActionBar from "@/Components/UI/ActionBar";
 import MHBreadCrumn from "@/Components/UI/MHBreadCrumn";
 import {
-  useAcademicDepartmentQuery,
-  useUpdateAcademicDepartmentMutation,
-} from "@/redux/api/academic/department";
-import {
-  useAcademicFacultyQuery,
-  useUpdateAcademicFacultyMutation,
-} from "@/redux/api/academic/facultyacultyApi";
-import {
   useDepartmentQuery,
   useUpdateDepartmentMutation,
 } from "@/redux/api/departmentApi";
@@ -21,10 +13,10 @@ type IParams = {
   params: any;
 };
 
-const EditeAcademicFaculty = ({ params }: IParams) => {
+const EditeDepartment = ({ params }: IParams) => {
   const { id } = params;
-  const { data, isLoading } = useAcademicFacultyQuery(id);
-  const [updateDepartment] = useUpdateAcademicFacultyMutation();
+  const { data, isLoading } = useDepartmentQuery(id);
+  const [updateDepartment] = useUpdateDepartmentMutation();
   const onSubmit = async (value: { title: string }) => {
     message.loading("Updating.....");
     try {
@@ -93,4 +85,4 @@ const EditeAcademicFaculty = ({ params }: IParams) => {
   );
 };
 
-export default EditeAcademicFaculty;
+export default EditeDepartment;
