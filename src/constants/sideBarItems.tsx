@@ -92,8 +92,8 @@ const SideBarItems = (role: string) => {
           key: `/${role}/semester-ragistration`,
         },
         {
-          label: <Link href={`/${role}/offered-courses`}>Offered Courses</Link>,
-          key: `/${role}/offered-courses`,
+          label: <Link href={`/${role}/offered-course`}>Offered Courses</Link>,
+          key: `/${role}/offered-course`,
         },
         {
           label: (

@@ -6,6 +6,14 @@ export enum taqTypes {
   academicFaculty = "academci_faculty",
   academicSemester = "academic_semester",
   academicDepartment = "academic_department",
+  student = "student",
+  room = "room",
+  building = "building",
+  course = "course",
+  semesterRegistration = "semester-registration",
+  courseRegistration = "courseRegistration",
+  offeredCourses = "offeredCourses",
+  offeredCourseSection = "offeredCourseSection",
 }
 export const tagTypesList = [
   taqTypes.user,
@@ -15,4 +23,12 @@ export const tagTypesList = [
   taqTypes.academicFaculty,
   taqTypes.academicSemester,
   taqTypes.academicDepartment,
+  taqTypes.student,
+  taqTypes.room,
+  taqTypes.building,
+  taqTypes.course,
+  taqTypes.semesterRegistration,
+  taqTypes.courseRegistration,
+  taqTypes.offeredCourses,
+  taqTypes.offeredCourseSection,
 ];

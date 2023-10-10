@@ -3,7 +3,9 @@ import { Col, Row } from "antd";
 import React from "react";
 import FromInput from "../From/fromInput";
 import SelectionFaild from "../From/Selectoption";
-import { AcaDepartment, AcaFaculty, AcaSemester } from "@/constants/global";
+import ACDepartmentField from "../From/ACDepartmentField";
+import ACFacultyField from "../From/ACFacultyField";
+import ACSemesterField from "../From/ACSemesterField";
 
 const StudentInfo = () => {
   return (
@@ -79,12 +81,9 @@ const StudentInfo = () => {
             marginBottom: "10px",
           }}
         >
-          <SelectionFaild
-            size="large"
+          <ACDepartmentField
             name="student.academicDepartment"
             label="Academic Department"
-            placeholder="Select Options"
-            options={AcaDepartment}
           />
         </Col>
         <Col
@@ -94,12 +93,9 @@ const StudentInfo = () => {
             marginBottom: "10px",
           }}
         >
-          <SelectionFaild
-            size="large"
+          <ACFacultyField
             name="student.academicFaculty"
             label="Academic Faculty"
-            placeholder="Select Options"
-            options={AcaFaculty}
           />
         </Col>
         <Col
@@ -109,12 +105,9 @@ const StudentInfo = () => {
             marginBottom: "10px",
           }}
         >
-          <SelectionFaild
-            size="large"
+          <ACSemesterField
             name="student.academicSemester"
             label="Academic Semester"
-            placeholder="Select Options"
-            options={AcaSemester}
           />
         </Col>
       </Row>
